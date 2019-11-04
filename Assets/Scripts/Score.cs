@@ -5,6 +5,6 @@
    /// </summary>
    public struct Score
    {
-      public int Points;
+      public int Points { get; set; }
    }
 }

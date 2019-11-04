@@ -7,7 +7,7 @@ namespace PlayerDataInput
    public class PlayerDetail : ScriptableObject
    {
       public string Name;
-      public string Value;
+      [HideInInspector] public string Value;
       public bool IsRequire;
 
       public string Validate()
