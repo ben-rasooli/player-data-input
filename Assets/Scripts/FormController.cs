@@ -2,7 +2,7 @@
 
 namespace PlayerDataInput
 {
-   public class Form : MonoBehaviour
+   public class FormController : MonoBehaviour
    {
       #region ------------------------------dependencies
       [SerializeField] IScoreReporter _scoreReporter;
@@ -10,6 +10,8 @@ namespace PlayerDataInput
       #endregion
 
       #region ------------------------------interface
+      public PlayerData DataStructure { get; set; }
+
       /// <summary>
       /// It creates a new PlayerData and sends it to a data persistence solution.
       /// </summary>
