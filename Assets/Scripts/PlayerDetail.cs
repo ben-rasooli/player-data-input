@@ -8,6 +8,7 @@ namespace PlayerDataInput
    {
       public string Name;
       [HideInInspector] public string Value;
+      public bool IsEnable;
       public bool IsRequire;
 
       public string Validate()
