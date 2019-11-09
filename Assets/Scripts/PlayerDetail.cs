@@ -13,10 +13,14 @@ namespace PlayerDataInput
 
       public string Validate()
       {
+         if (Value == string.Empty && !IsRequire)
+            return string.Empty;
+
          return Regex.IsMatch(Value, _validationRegExPattern)
             ? string.Empty
-            : $"{Name} is not valid";
+            : _validationPatternDescription;
       }
       [SerializeField] string _validationRegExPattern;
+      [SerializeField] string _validationPatternDescription;
    }
 }

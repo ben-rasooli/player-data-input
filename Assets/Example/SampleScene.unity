@@ -379,6 +379,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6603583858924909745, guid: 50b257fd387bb4279af7fe110ce6f2b6,
+        type: 3}
+      propertyPath: m_Name
+      value: Form - Canvas
+      objectReference: {fileID: 0}
     - target: {fileID: 2740880088646718607, guid: 50b257fd387bb4279af7fe110ce6f2b6,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -443,11 +448,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6603583858924909745, guid: 50b257fd387bb4279af7fe110ce6f2b6,
-        type: 3}
-      propertyPath: m_Name
-      value: Form - Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 6603583858924909748, guid: 50b257fd387bb4279af7fe110ce6f2b6,
         type: 3}
@@ -1712,6 +1712,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946118706319201516, guid: 0e6893b86be4b401db4977e4a315f565,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e6893b86be4b401db4977e4a315f565, type: 3}

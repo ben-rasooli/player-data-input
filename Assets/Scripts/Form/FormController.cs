@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEngine.UI;
 
 namespace PlayerDataInput
 {
@@ -17,33 +19,49 @@ namespace PlayerDataInput
       public void Show()
       {
          removeTextInputGameObjects();
+         _textInputControllers.Clear();
 
-         foreach (var playerDetail in DataStructure)
+         DataStructure.Where(playerDetail => playerDetail.IsEnable).ToList().ForEach(playerDetail =>
          {
-            if (!playerDetail.IsEnable)
-               continue;
-
-            var textInput = Instantiate(_textInputPrefab, _textInputsTransform).transform;
-            textInput.Find("Label").GetComponent<TextMeshProUGUI>().text = playerDetail.Name;
-            _textInputFietds.Add(textInput.GetComponent<TMP_InputField>());
-         }
+            var textInputController = Instantiate(_textInputPrefab, _textInputsTransform).GetComponent<TextInputController>();
+            textInputController.Setup(playerDetail);
+            _textInputControllers.Add(textInputController);
+         });
 
          gameObject.SetActive(true);
       }
       [SerializeField] GameObject _textInputPrefab;
       [SerializeField] Transform _textInputsTransform;
+      #endregion
+
+      #region ------------------------------details
+      void Start()
+      {
+         _submitButton = transform.Find("Content/Buttons/Submit - Button").GetComponent<Button>();
+         _submitButton.onClick.AddListener(submit);
+      }
+      Button _submitButton;
 
       /// <summary>
       /// It creates a new PlayerData and sends it to a data persistence solution.
       /// </summary>
-      public void Submit()
+      void submit()
       {
+         int validTextInputsCount = _textInputControllers
+            .Select(c => c.Validate())
+            .Where(x => x)
+            .Count();
 
+         if (validTextInputsCount == _textInputControllers.Count)
+         {
+            List<string> inputValues = _textInputControllers.Select(c => c.Value).ToList();
+
+            //save player data
+            inputValues.ForEach(v => print(v));
+         }
       }
-      List<TMP_InputField> _textInputFietds = new List<TMP_InputField>();
-      #endregion
+      List<TextInputController> _textInputControllers = new List<TextInputController>();
 
-      #region ------------------------------details
       void removeTextInputGameObjects()
       {
          var children = _textInputsTransform.GetComponentsInChildren<Transform>();

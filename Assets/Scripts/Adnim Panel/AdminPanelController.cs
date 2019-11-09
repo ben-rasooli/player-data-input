@@ -13,7 +13,7 @@ namespace PlayerDataInput
       [SerializeField] List<PlayerDetail> _playerDetailTemplates;
       [SerializeField] Button _saveButton;
 
-      void Show()
+      public void Show()
       {
          gameObject.SetActive(true);
       }
