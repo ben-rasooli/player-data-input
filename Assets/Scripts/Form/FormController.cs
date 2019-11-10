@@ -18,9 +18,6 @@ namespace PlayerDataInput
 
       public void Show()
       {
-         removeTextInputGameObjects();
-         _textInputControllers.Clear();
-
          DataStructure.Where(playerDetail => playerDetail.IsEnable).ToList().ForEach(playerDetail =>
          {
             var textInputController = Instantiate(_textInputPrefab, _textInputsTransform).GetComponent<TextInputController>();
@@ -32,6 +29,11 @@ namespace PlayerDataInput
       }
       [SerializeField] GameObject _textInputPrefab;
       [SerializeField] Transform _textInputsTransform;
+
+      public void Hide()
+      {
+         gameObject.SetActive(false);
+      }
       #endregion
 
       #region ------------------------------details
@@ -41,6 +43,11 @@ namespace PlayerDataInput
          _submitButton.onClick.AddListener(submit);
       }
       Button _submitButton;
+
+      void OnDisable()
+      {
+         removeTextInputs();
+      }
 
       /// <summary>
       /// It creates a new PlayerData and sends it to a data persistence solution.
@@ -62,15 +69,15 @@ namespace PlayerDataInput
       }
       List<TextInputController> _textInputControllers = new List<TextInputController>();
 
-      void removeTextInputGameObjects()
+      void removeTextInputs()
       {
-         var children = _textInputsTransform.GetComponentsInChildren<Transform>();
-
-         for (int i = 1; i < children.Length; i++)
+         for (int i = 0; i < _textInputControllers.Count; i++)
          {
-            children[i].parent = null;
-            Destroy(children[i].gameObject);
+            _textInputControllers[i].transform.parent = null;
+            Destroy(_textInputControllers[i].gameObject);
          }
+
+         _textInputControllers.Clear();
       }
       #endregion
    }
