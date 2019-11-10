@@ -7,9 +7,9 @@ namespace PlayerDataInput
    {
       #region ------------------------------dependencies
       PlayerDetail _playerDetail;
-      TextMeshProUGUI _labelUI;
-      TextMeshProUGUI _errorMessageUI;
-      TMP_InputField _inputField;
+      [SerializeField] TextMeshProUGUI _labelUI;
+      [SerializeField] TextMeshProUGUI _errorMessageUI;
+      [SerializeField] TMP_InputField _inputField;
       #endregion
 
       #region ------------------------------interface
@@ -42,14 +42,7 @@ namespace PlayerDataInput
       #endregion
 
       #region ------------------------------details
-      void Awake()
-      {
-         _labelUI = transform.Find("Label").GetComponent<TextMeshProUGUI>();
-         _errorMessageUI = transform.Find("ErrorMessage").GetComponent<TextMeshProUGUI>();
-         _inputField = transform.GetComponentInChildren<TMP_InputField>();
-      }
-
-      private void Start()
+      void Start()
       {
          _inputField.onValueChanged.AddListener(v => _playerDetail.Value = v);
       }
