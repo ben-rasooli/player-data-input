@@ -31,15 +31,12 @@ namespace PlayerDataInput
       #endregion
 
       #region ------------------------------details
-      List<GameObject> _entries;
+      List<GameObject> _entries = new List<GameObject>();
 
       private void OnDisable()
       {
          for (int i = 0; i < _entries.Count; i++)
-         {
-            _entries[i].transform.parent = null;
             Destroy(_entries[i]);
-         }
 
          _entries.Clear();
       }

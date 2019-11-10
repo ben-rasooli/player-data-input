@@ -17,13 +17,10 @@ namespace PlayerDataInput
             var leaderboardPlayerData = new LeaderboardPlayerData(playerData);
 
             var dataProperties = leaderboardPlayerData.GetType().GetProperties();
-            var scoreProperties = leaderboardPlayerData.Score.GetType().GetProperties();
+            var scoreProperties = leaderboardPlayerData.ScorePoints.GetType().GetProperties();
 
-            for (int i = 0; i < dataProperties.Length - 1; i++)
+            for (int i = 0; i < dataProperties.Length; i++)
                 _textUIs[i].text = dataProperties[i].GetValue(leaderboardPlayerData).ToString();
-
-            for (int i = 0; i < scoreProperties.Length; i++)
-                _textUIs[i + (dataProperties.Length - 1)].text = scoreProperties[i].GetValue(leaderboardPlayerData.Score).ToString();
         }
     }
     #endregion

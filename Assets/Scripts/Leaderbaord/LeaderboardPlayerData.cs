@@ -6,12 +6,12 @@
    public struct LeaderboardPlayerData
    {
       public string Name { get; set; }
-      public Score Score { get; set; }
+      public int ScorePoints { get; set; }
 
       public LeaderboardPlayerData(PlayerData playerData)
       {
          Name = playerData.Details[0].Value;
-         Score = playerData.Score;
+         ScorePoints = playerData.Score.Points;
       }
    }
 }
