@@ -17,14 +17,31 @@ namespace PlayerDataInput
       {
          foreach (var playerData in playerDatas.OrderBy(_sortFunction))
          {
-            LeaderboardEntry entry = Instantiate(_entryPrefab, transform);
+            LeaderboardEntry entry = Instantiate(_entryPrefab, _entriesTransform);
             entry.Show(playerData);
+            _entries.Add(entry.gameObject);
          }
       }
+      [SerializeField] Transform _entriesTransform;
 
       public void Hide()
       {
+         gameObject.SetActive(false);
+      }
+      #endregion
 
+      #region ------------------------------details
+      List<GameObject> _entries;
+
+      private void OnDisable()
+      {
+         for (int i = 0; i < _entries.Count; i++)
+         {
+            _entries[i].transform.parent = null;
+            Destroy(_entries[i]);
+         }
+
+         _entries.Clear();
       }
       #endregion
    }
