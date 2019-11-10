@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Email
   Value: 
+  IsEnable: 0
   IsRequire: 0
   _validationRegExPattern: ^\S+@\S+$
+  _validationPatternDescription: It should be a valid email address

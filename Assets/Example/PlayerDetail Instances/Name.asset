@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Name
   Value: 
+  IsEnable: 0
   IsRequire: 1
   _validationRegExPattern: ^[A-Za-z]+$
+  _validationPatternDescription: Only characters are allowed

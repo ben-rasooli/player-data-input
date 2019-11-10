@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Phone
   Value: 
+  IsEnable: 0
   IsRequire: 0
   _validationRegExPattern: ^\d+$
+  _validationPatternDescription: Only digits are allowed
