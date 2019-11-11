@@ -2,7 +2,7 @@
 
 namespace PlayerDataInput
 {
-   public struct PlayerData
+   public struct FormPlayerData
    {
       public List<PlayerDetail> Details;
       public Score Score;
