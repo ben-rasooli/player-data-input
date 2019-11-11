@@ -9,13 +9,12 @@ namespace PlayerDataInput
    public class FormController : MonoBehaviour
    {
       #region ------------------------------dependencies
-      [SerializeField] IScoreReporter _scoreReporter;
-      [SerializeField] DataStorage _dataStorage;
+      DataStorage _dataStorage;
+      public IScoreReporter ScoreReporter { get; set; }
+      public List<PlayerDetail> DataStructure { get; set; }
       #endregion
 
       #region ------------------------------interface
-      public List<PlayerDetail> DataStructure { get; set; }
-
       public void Show()
       {
          DataStructure.Where(playerDetail => playerDetail.IsEnable).ToList().ForEach(playerDetail =>
@@ -39,6 +38,7 @@ namespace PlayerDataInput
       #region ------------------------------details
       void Start()
       {
+         _dataStorage = new DataStorage();
          _submitButton = transform.Find("Content/Buttons/Submit - Button").GetComponent<Button>();
          _submitButton.onClick.AddListener(submit);
       }
@@ -61,21 +61,25 @@ namespace PlayerDataInput
 
          if (validTextInputsCount == _textInputControllers.Count)
          {
-            List<string> inputValues = _textInputControllers.Select(c => c.Value).ToList();
-
-            //save player data
-            inputValues.ForEach(v => print(v));
+            var inputValues = _textInputControllers.Select(c => c.Value).ToList();
+            
+            savePlayerData(inputValues);
          }
       }
       List<TextInputController> _textInputControllers = new List<TextInputController>();
 
+      void savePlayerData(List<PlayerDetail> inputValues)
+      {
+         FormPlayerData formPlayerData = new FormPlayerData { Details = inputValues, Score = ScoreReporter.Report() };
+         DataStoragePlayerData playerData = new DataStoragePlayerData(formPlayerData);
+
+         _dataStorage.Save(playerData);
+      }
+
       void removeTextInputs()
       {
          for (int i = 0; i < _textInputControllers.Count; i++)
-         {
-            _textInputControllers[i].transform.parent = null;
             Destroy(_textInputControllers[i].gameObject);
-         }
 
          _textInputControllers.Clear();
       }

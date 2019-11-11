@@ -17,9 +17,9 @@ namespace PlayerDataInput
       /// If no list is available, a new one is created.
       /// </summary>
       /// <param name="playerData"></param>
-      public void Save(PlayerData playerData)
+      public void Save(DataStoragePlayerData playerData)
       {
-         List<PlayerData> playersData = File.Exists(_savePath) ? Load() : new List<PlayerData>();
+         List<DataStoragePlayerData> playersData = File.Exists(_savePath) ? Load() : new List<DataStoragePlayerData>();
 
          playersData.Add(playerData);
 
@@ -33,18 +33,18 @@ namespace PlayerDataInput
       /// It throws exeption if the player data doesn't exist.
       /// </summary>
       /// <param name="playerData"></param>
-      public void Update(PlayerData playerData)
+      public void Update(DataStoragePlayerData playerData)
       {
          if (!File.Exists(_savePath))
             throw new InvalidOperationException("playersData file not found");
 
-         List<PlayerData> playersData = Load();
+         List<DataStoragePlayerData> playersData = Load();
 
-         if (!playersData.Any(pd => pd.Details[0].Value == playerData.Details[0].Value))
+         if (!playersData.Any(pd => pd.Details["Name"] == playerData.Details["Name"]))
             throw new InvalidOperationException("specified playerData not found");
 
          for (int i = 0; i < playersData.Count; i++)
-            if (playersData[i].Details[0].Value == playerData.Details[0].Value)
+            if (playersData[i].Details["Name"] == playerData.Details["Name"])
                playersData[i] = playerData;
 
          FileStream fileStream = new FileStream(_savePath, FileMode.Create);
@@ -57,15 +57,15 @@ namespace PlayerDataInput
       /// It returns an empty list if no list is found.
       /// </summary>
       /// <returns></returns>
-      public List<PlayerData> Load()
+      public List<DataStoragePlayerData> Load()
       {
-         List<PlayerData> result;
+         List<DataStoragePlayerData> result;
 
          if (!File.Exists(_savePath))
-            return new List<PlayerData>();
+            return new List<DataStoragePlayerData>();
 
          FileStream fileStream = new FileStream(_savePath, FileMode.Open);
-         result = _formatter.Deserialize(fileStream) as List<PlayerData>;
+         result = _formatter.Deserialize(fileStream) as List<DataStoragePlayerData>;
          fileStream.Close();
 
          return result;

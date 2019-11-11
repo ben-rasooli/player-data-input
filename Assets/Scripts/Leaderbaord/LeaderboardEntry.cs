@@ -12,7 +12,7 @@ namespace PlayerDataInput
         #endregion
 
         #region ------------------------------interface
-        public void Show(PlayerData playerData)
+        public void Show(FormPlayerData playerData)
         {
             var leaderboardPlayerData = new LeaderboardPlayerData(playerData);
 

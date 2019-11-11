@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace PlayerDataInput
@@ -38,7 +39,10 @@ namespace PlayerDataInput
          return false;
       }
 
-      public string Value { get { return _playerDetail.Value; } }
+      public PlayerDetail Value
+      {
+         get { return _playerDetail; }
+      }
       #endregion
 
       #region ------------------------------details

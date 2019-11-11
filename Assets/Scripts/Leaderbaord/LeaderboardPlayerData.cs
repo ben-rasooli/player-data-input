@@ -8,7 +8,7 @@
       public string Name { get; set; }
       public int ScorePoints { get; set; }
 
-      public LeaderboardPlayerData(PlayerData playerData)
+      public LeaderboardPlayerData(FormPlayerData playerData)
       {
          Name = playerData.Details[0].Value;
          ScorePoints = playerData.Score.Points;

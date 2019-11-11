@@ -9,11 +9,11 @@ namespace PlayerDataInput
    {
       #region ------------------------------dependencies
       [SerializeField] LeaderboardEntry _entryPrefab;
-      Func<PlayerData, int> _sortFunction = pd => pd.Score.Points;
+      Func<FormPlayerData, int> _sortFunction = pd => pd.Score.Points;
       #endregion
 
       #region ------------------------------interface
-      public void Show(List<PlayerData> playerDatas)
+      public void Show(List<FormPlayerData> playerDatas)
       {
          foreach (var playerData in playerDatas.OrderBy(_sortFunction))
          {
