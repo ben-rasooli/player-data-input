@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace PlayerDataInput
 {
-   [CreateAssetMenu(menuName = "PlayerDataInput/PlayerDetail", fileName = "PlayerDetail")]
+   [CreateAssetMenu(menuName = "Player Data Input/Player Detail", fileName = "Player Detail")]
    public class PlayerDetail : ScriptableObject
    {
       public string Name;
       [HideInInspector] public string Value;
-      public bool IsEnable;
-      public bool IsRequire;
+      [HideInInspector] public bool IsEnable;
+      [HideInInspector] public bool IsRequire;
 
       public string Validate()
       {
