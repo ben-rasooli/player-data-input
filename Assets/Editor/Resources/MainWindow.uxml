@@ -1,0 +1,15 @@
+﻿<UXML xmlns="UnityEngine.UIElements">
+  <VisualElement class="content">
+    <Label class="header" text="Player Detail Database"/>
+    <Button name="addNewPlayerDetail" text="Add New Player Detail"/>
+    <Button name="removeSelectedPlayerDetail" text="Remove Selected Player Detail"/>
+    <Button name="save" text="Save"/>
+    <ListView />
+  </VisualElement>
+
+  <!-- Creates our template and gives it a name for future reference.
+  <Template path="Assets/Editor/Resources/ButtonTemplate.uxml" name="button-template" />
+  <VisualElement class="buttons-container">
+    <Instance template="button-template" name="Cube"/>
+  </VisualElement> -->
+</UXML>

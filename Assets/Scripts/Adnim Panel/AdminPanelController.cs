@@ -10,7 +10,6 @@ namespace PlayerDataInput
       [SerializeField] FormController _formController;
       [SerializeField] GameObject _detailOptionsPrefab;
       [SerializeField] Transform _detailsTransform;
-      [SerializeField] List<PlayerDetail> _playerDetailTemplates;
       [SerializeField] Button _saveButton;
 
       public void Show()
@@ -20,14 +19,16 @@ namespace PlayerDataInput
 
       void Start()
       {
-         foreach (var playerDetailTemplate in _playerDetailTemplates)
+         var playerDetailInstances = Resources.LoadAll<PlayerDetail>("PlayerDetailInstances");
+
+         foreach (var playerDetailTemplate in playerDetailInstances)
          {
             _playerDetails.Add(Instantiate(playerDetailTemplate));
             var detailOptionsTransform = Instantiate(_detailOptionsPrefab, _detailsTransform).transform;
-            detailOptionsTransform.Find("Label").GetComponent<TextMeshProUGUI>().text = playerDetailTemplate.Name;
+            detailOptionsTransform.Find("Label").GetComponent<TextMeshProUGUI>().text = playerDetailTemplate.DisplayName;
 
             var toggls = new List<Toggle>(detailOptionsTransform.GetComponentsInChildren<Toggle>());
-            _listOfDetailOptions.Add(playerDetailTemplate.Name, toggls);
+            _listOfDetailOptions.Add(playerDetailTemplate.DisplayName, toggls);
          }
 
          _saveButton.onClick.AddListener(save);
@@ -37,8 +38,8 @@ namespace PlayerDataInput
       {
          foreach (var playerDetail in _playerDetails)
          {
-            playerDetail.IsEnable = _listOfDetailOptions[playerDetail.Name][0].isOn;
-            playerDetail.IsRequire = _listOfDetailOptions[playerDetail.Name][1].isOn;
+            playerDetail.IsEnable = _listOfDetailOptions[playerDetail.DisplayName][0].isOn;
+            playerDetail.IsRequire = _listOfDetailOptions[playerDetail.DisplayName][1].isOn;
          }
          _formController.DataStructure = _playerDetails;
          _formController.Show();

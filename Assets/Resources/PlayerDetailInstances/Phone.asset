@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d490ca4f4e6b4589b5ace0c934d46f4, type: 3}
-  m_Name: Email
+  m_Name: Phone
   m_EditorClassIdentifier: 
-  Name: Email
+  DisplayName: Phone
   Value: 
   IsEnable: 0
   IsRequire: 0
-  _validationRegExPattern: ^\S+@\S+$
-  _validationPatternDescription: It should be a valid email address
+  _validationRegExPattern: ^\d+$
+  _validationPatternDescription: Only digits are allowed

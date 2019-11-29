@@ -14,7 +14,7 @@ namespace PlayerDataInput
       {
          Details = playerData.Details
             .Where(pd => pd.IsEnable)
-            .ToDictionary(pd => pd.Name, pd => pd.Value);
+            .ToDictionary(pd => pd.DisplayName, pd => pd.Value);
          Score = playerData.Score;
       }
    }

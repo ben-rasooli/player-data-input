@@ -1,0 +1,7 @@
+﻿<UXML xmlns="UnityEngine.UIElements">
+  <VisualElement class="playerDetailTemplate">
+    <TextField label="Display Name" name="displayName" />
+    <TextField label="Validation RegEx Pattern" name="validationRegExPattern" />
+    <TextField label="Validation Description" name="validationDescription" />
+  </VisualElement>
+</UXML>

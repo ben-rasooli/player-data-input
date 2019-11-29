@@ -6,7 +6,7 @@ namespace PlayerDataInput
    [CreateAssetMenu(menuName = "Player Data Input/Player Detail", fileName = "Player Detail")]
    public class PlayerDetail : ScriptableObject
    {
-      public string Name;
+      public string DisplayName;
       [HideInInspector] public string Value;
       [HideInInspector] public bool IsEnable;
       [HideInInspector] public bool IsRequire;
@@ -20,7 +20,7 @@ namespace PlayerDataInput
             ? string.Empty
             : _validationPatternDescription;
       }
-      [SerializeField] string _validationRegExPattern;
-      [SerializeField] string _validationPatternDescription;
+      public string _validationRegExPattern;
+      public string _validationPatternDescription;
    }
 }

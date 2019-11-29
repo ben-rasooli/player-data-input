@@ -21,7 +21,7 @@ namespace PlayerDataInput
       public void Setup(PlayerDetail playerDetail)
       {
          _playerDetail = playerDetail;
-         _labelUI.text = _playerDetail.Name;
+         _labelUI.text = _playerDetail.DisplayName;
       }
 
       /// <summary>

@@ -1,0 +1,26 @@
+﻿.content {
+    width: 800px;
+    height: 800px;
+    background-color: #CCC;
+}
+
+.header {
+  width: auto;
+  height: 35px;
+  -unity-font-style: bold;
+  font-size: 16px;
+  -unity-text-align: middle-center;
+  background-color: #999;
+}
+
+.content ListView {
+  height: 800px;
+  --unity-item-height: 63px;
+}
+
+.content ListView .playerDetailInput{
+  padding: 5px;
+}
+
+.playerDetailInput TextField {
+}
