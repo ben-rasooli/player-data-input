@@ -17,6 +17,8 @@ namespace PlayerDataInput
       #region ------------------------------interface
       public void Show()
       {
+         removeTextInputs();
+
          DataStructure.Where(playerDetail => playerDetail.IsEnable).ToList().ForEach(playerDetail =>
          {
             var textInputController = Instantiate(_textInputPrefab, _textInputsTransform).GetComponent<TextInputController>();
@@ -62,7 +64,7 @@ namespace PlayerDataInput
          if (validTextInputsCount == _textInputControllers.Count)
          {
             var inputValues = _textInputControllers.Select(c => c.Value).ToList();
-            
+
             savePlayerData(inputValues);
          }
       }

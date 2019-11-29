@@ -2006,20 +2006,17 @@ PrefabInstance:
         type: 3}
       propertyPath: _playerDetailTemplates.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: e2004ba0cf6b245f4afe610ba94718ff,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 6946118706319201519, guid: 0e6893b86be4b401db4977e4a315f565,
         type: 3}
       propertyPath: _playerDetailTemplates.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: c7eadcff191ab444fb873980f3133825,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 6946118706319201519, guid: 0e6893b86be4b401db4977e4a315f565,
         type: 3}
       propertyPath: _playerDetailTemplates.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 397690459126943408df1915e736a759,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 4159152195806906674, guid: 0e6893b86be4b401db4977e4a315f565,
         type: 3}
       propertyPath: m_AnchorMin.y
