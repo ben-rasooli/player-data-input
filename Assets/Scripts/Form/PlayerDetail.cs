@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace PlayerDataInput
 {
-   [CreateAssetMenu(menuName = "Player Data Input/Player Detail", fileName = "Player Detail")]
    public class PlayerDetail : ScriptableObject
    {
       public string DisplayName;
